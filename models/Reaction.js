@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const reactionSchema = mongoose.Schema({
     reactionId: {
-
+        type: Schema.Types.ObjectId,
+        default: () => new Types.ObjectId(),
     },
     reactionBody: {
         type: String,
@@ -19,3 +20,5 @@ const reactionSchema = mongoose.Schema({
          //Also see find the getter method they are referencing 
     }
 })
+
+module.exports = reactionSchema;

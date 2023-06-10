@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const reactionSchema = require('./Reaction')
 
 const thoughtSchema = new mongoose.Schema({
     thoughtText: {
@@ -18,5 +19,5 @@ const thoughtSchema = new mongoose.Schema({
         required: true
     },
     // Gotta figure out what to put in the code below
-    reactions: insertSomethingLater
+    reactions: [reactionSchema]
 })
