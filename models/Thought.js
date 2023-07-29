@@ -10,8 +10,11 @@ const thoughtSchema = new Schema({
     },
     createdAt: {
         //Need to recheck this code later to see if it is correct
-        Date: { type: Date, default: Date.now }
+        type: Date,
+        Date: { type: Date, default: Date.now },
         //Also see find the getter method they are referencing
+        
+      get: timestamp => dateFormat(timestamp)
     },
     username: {
         // I think this is correct but verify later
@@ -20,6 +23,12 @@ const thoughtSchema = new Schema({
     },
     // Gotta figure out what to put in the code below
     reactions: [reactionSchema]
+    },
+    {
+    toJSON: {
+      getters: true
+    },
+    id: false
 })
 
 thoughtSchema
@@ -28,6 +37,6 @@ thoughtSchema
         return this.reactions.length
     })
 
-const Thought = model('thought', thoughtSchema);
+const Thought = model('thoughts', thoughtSchema);
 
 module.exports = Thought;
